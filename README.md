@@ -9,8 +9,8 @@ Feature levels for the project
 - Level 5: User reviews to be made available alongside search results. We can also display top books in the welcome page (most checked out, most reviewed etc).
 
 Version history:
-- 18-Apr: Sukhman pushes the first draft of LL implementation
-- 21-Apr: Linked list code updated to cover all use cases
+- 18-Apr: Sukhman: pushes the first draft of LL implementation
+- 21-Apr: Ajay: Linked list code updated to cover all use cases
   - Node class is the private class in the main LL class
   - New methods to remove,retrieve data based on indexes
   - JUnit test class is introduced for all methods
