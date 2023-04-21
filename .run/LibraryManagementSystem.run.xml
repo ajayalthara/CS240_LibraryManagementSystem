@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="LibraryManagementSystem" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="libraryManagementMain" />
+    <module name="CS240_LibraryManagementSystem" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
