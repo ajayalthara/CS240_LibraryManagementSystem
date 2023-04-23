@@ -3,6 +3,8 @@ public class libraryManagementMain {
     public static void main(String[] args) {
         myLinkedList ajList = new myLinkedList();
 
+        GUI gui = new GUI();
+        gui.begin(args);
 
         System.out.println("Debug:Hello there");
         System.out.println(ajList.isListEmpty());
