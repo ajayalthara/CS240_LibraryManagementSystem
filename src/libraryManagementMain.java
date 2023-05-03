@@ -4,17 +4,23 @@ public class libraryManagementMain {
         myLinkedList ajList = new myLinkedList();
 
         GUI gui = new GUI();
-        gui.begin(args);
+       // gui.begin(args);
+        myHashMap map = new myHashMap();
 
-        System.out.println("Debug:Hello there");
+        map.put(12, "Triangle");
+        System.out.println(map.get(12));
+        //map.remove(12);
+        System.out.println(map.toString());
+
+        /*System.out.println("Debug:Hello there");
         System.out.println(ajList.isListEmpty());
         ajList.addNode("Ajay testing");
         ajList.addNode("Ajay testing2");
         ajList.addNode("Ajay testing3");
-        ajList.addNode("Ajay testing4");
+        ajList.addNode("Ajay testing4"); */
 
         //ajList.getAllNodeData(ajList);
-        System.out.println(ajList.getAllNodeDataInArray());
+        //System.out.println(ajList.getAllNodeDataInArray());
 //        System.out.println(ajList.isListEmpty());
 //        System.out.println("Before remove");
 //        System.out.println(ajList.sizeOfList());
