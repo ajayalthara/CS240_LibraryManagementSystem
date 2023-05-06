@@ -1,16 +1,18 @@
 import dataStructures.*;
+import gui.gui;
+
 public class libraryManagementMain {
     public static void main(String[] args) {
         myLinkedList ajList = new myLinkedList();
 
-        GUI gui = new GUI();
-       // gui.begin(args);
+        gui gui = new gui();
+        gui.begin(args);
         myHashMap map = new myHashMap();
 
         map.put(12, "Triangle");
         System.out.println(map.get(12));
         //map.remove(12);
-        System.out.println(map.toString());
+        System.out.println(map);
 
         /*System.out.println("Debug:Hello there");
         System.out.println(ajList.isListEmpty());

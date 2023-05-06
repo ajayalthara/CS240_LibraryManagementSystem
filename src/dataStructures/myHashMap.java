@@ -1,3 +1,5 @@
+package dataStructures;
+
 public class myHashMap<K, V> {
 
     private class Entry<K, V> { // class within class so I don't have to have extra files
