@@ -5,8 +5,8 @@ public class libraryManagementMain {
     public static void main(String[] args) {
         myLinkedList ajList = new myLinkedList();
 
-        gui gui = new gui();
-        gui.begin(args);
+//        gui gui = new gui();
+//        gui.begin(args);
         myHashMap map = new myHashMap();
 
         map.put(12, "Triangle");

@@ -1,13 +1,13 @@
 package dataStructures;
 
 public class myHashMap<K, V> {
-
-    private class Entry<K, V> { // class within class so I don't have to have extra files
+    //A node class in hashMap. Adding this as an extra class to avoid creation of extra files
+    private class hashMapEntry<K, V> {
         private K key;
         private V value;
-        private Entry<K, V> next;
+        private hashMapEntry<K, V> next;
 
-        public Entry(K key, V value) {
+        public hashMapEntry(K key, V value) {
             this.key = key;
             this.value = value;
         }
@@ -26,7 +26,7 @@ public class myHashMap<K, V> {
 
         @Override
         public String toString() {
-            Entry<K,V> temp = this;
+            hashMapEntry<K,V> temp = this;
             StringBuilder sb = new StringBuilder();
             while (temp != null) {
                 sb.append(temp.key + " -> " + temp.value + ",");
@@ -35,42 +35,45 @@ public class myHashMap<K, V> {
             return sb.toString();
         }
     }
-
-    private final int SIZE = 5;
-    private Entry<K, V> table[];
-
+    // The initial size of hashMap is assigned
+    private final int hashMapSize = 5;
+    // hashTable is a list of k.v pairs of type hashMapEntry
+    private hashMapEntry<K, V> hashTable[];
+    // Constructor for the outer class which creates a hashTable with null entries and the size is equal to hashMapSize
     public myHashMap() {
-        table = new Entry[SIZE];
+        hashTable = new hashMapEntry[hashMapSize];
     }
-
-    public void put(K key, V value) { // adds value with key into HashMap
-        int hash = key.hashCode() % SIZE;
-        Entry<K, V> e = table[hash];
+    //Function to add value with key into HashMap
+    public void put(K key, V value) {
+        //Rotating hash
+        int hash = key.hashCode() % hashMapSize;
+        hashMapEntry<K, V> e = hashTable[hash];
 
         if (e == null) {
-            table[hash]= new Entry<K, V>(key, value);
+            hashTable[hash]= new hashMapEntry<K, V>(key, value);
         } else {
-            while (e.next != null) { // checks if next equals null
+            // Traverses the hashTable and checks each key for equality
+            // If a key with the particular hash value is found then its value is updated
+            while (e.next != null) {
                 if (e.getKey() == key) {
                     e.setValue(value);
                     return;
                 }
                 e = e.next;
             }
-
+            // The following if block executes when there is a single element ('next' is null)
             if (e.getKey() == key) { // if key exists, override it
                 e.setValue(value);
                 return;
             }
-
-            e.next = new Entry<K, V>(key, value); // sets the next value (which is null originally)
+            // When is this getting executed?
+            e.next = new hashMapEntry<K, V>(key, value); // sets the next value (which is null originally)
         }
     }
-
-
-    public V get(K key) { // gets value associated with key
-        int hash = key.hashCode() % SIZE;
-        Entry<K, V> e = table[hash];
+    //Function to retrieve value with the given key from hashMap
+    public V get(K key) {
+        int hash = key.hashCode() % hashMapSize;
+        hashMapEntry<K, V> e = hashTable[hash];
 
         if (e == null) {
             return null;
@@ -82,24 +85,23 @@ public class myHashMap<K, V> {
             }
             e = e.next; // otherwise look to next
         }
-
         return null; // key does not exist
     }
-    public Entry<K, V> remove(K key) { // remove value & key
-        int hash = key.hashCode() % SIZE;
-        Entry<K, V> e = table[hash];
+    public hashMapEntry<K, V> remove(K key) { // remove value & key
+        int hash = key.hashCode() % hashMapSize;
+        hashMapEntry<K, V> e = hashTable[hash];
 
         if(e == null) {
             return null;
         }
 
         if(e.getKey() == key) { // if the key matches given key for the head
-            table[hash] = e.next; // the table needs to point to next value, cutting out e
+            hashTable[hash] = e.next; // the hashTable needs to point to next value, cutting out e
             e.next = null;
             return e;
         }
 
-        Entry<K, V> prev = e;
+        hashMapEntry<K, V> prev = e;
         e = e.next;
 
         while(e != null) {
@@ -115,9 +117,9 @@ public class myHashMap<K, V> {
     @Override // child class overrides base class
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < SIZE; i++) {
-            if (table[i] != null) {
-                sb.append(i + " " + table[i] + "\n");
+        for (int i = 0; i < hashMapSize; i++) {
+            if (hashTable[i] != null) {
+                sb.append(i + " " + hashTable[i] + "\n");
             } else {
                 sb.append(i + " " + "null" + "\n");
             }
@@ -127,8 +129,8 @@ public class myHashMap<K, V> {
     }
 
     public boolean containsKey(K key) {
-        int hash = key.hashCode() % SIZE;
-        Entry<K, V> e = table[hash];
+        int hash = key.hashCode() % hashMapSize;
+        hashMapEntry<K, V> e = hashTable[hash];
 
         if(e == null) {
             return false;
