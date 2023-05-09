@@ -1,44 +1,53 @@
 package gui;
 
+import dataStructures.myHashMap;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class gui extends Application {
+public class appHomeGui extends Application {
     private Button addBooksButton, removeBooksButton, modifyBooksButton;
-    private Scene initialScene, addBooksScene;
+    private Scene homeScene, addBooksScene;
     private Group root, root2;
-
+    // Method that is called from main class to launch the GUI
     public static void begin(String[] args) {
-
         launch(args);
     }
-
+    // Overriding the start method from Applications class
     public void start(Stage stage) throws Exception {
-        // creates the stage
+        // Creates the stage
         stage.setTitle("Library Management System");
         stage.setWidth(1000);
         stage.setHeight(700);
-        stage.setResizable(true); // determines if the window can be resized
-        // creates the scenes
+        stage.setResizable(true); // Determines if the window can be resized
+        // Creates the root node which is of type Group
         root = new Group();
-        initialScene = new Scene(root, 1000, 700, Color.LIGHTBLUE);
         root2 = new Group();
+        // Creates the home and addBook scene
+        homeScene = new Scene(root, 1000, 700, Color.LIGHTBLUE);
         addBooksScene = new Scene(root2, 1000, 700, Color.LIGHTBLUE);
-        // adds buttons to initialScene
+        // Creating Icons
+        Image windowIcon = new Image("bookIcon.png");
+        stage.getIcons().add(windowIcon);
+        // Adding buttons to home scene
         addBooks(stage);
         removeBooks();
         modifyBooks();
-        getBookInfoScene();
-        stage.setScene(initialScene);
+        getBookInfoScene(stage);
+        //goHome();
+        // Setting the Scene and showing the stage
+        stage.setScene(homeScene);
         stage.show();
+    }
 
+    private void goHome() {
 
     }
 
@@ -67,10 +76,14 @@ public class gui extends Application {
         modifyBooksButton.setLayoutX(700);
         modifyBooksButton.setLayoutY(350);
         modifyBooksButton.setPrefSize(120,40);
-        root.getChildren().add(modifyBooksButton);
+        root.getChildren().add  (modifyBooksButton);
     }
 
-    private void getBookInfoScene() {
+    private void getBookInfoScene(Stage stage) {
+        //Adding new hashmap where the values will be stored
+        myHashMap titleAuthor = new myHashMap();
+
+
         TextField getTitle = new TextField();
         TextField getAuthor = new TextField();
         TextField getGenre = new TextField();
@@ -106,8 +119,24 @@ public class gui extends Application {
             String title = getTitle.getText();
             String author = getAuthor.getText();
             String genre = getGenre.getText();
+            System.out.println(title);
+            System.out.println(author);
+            System.out.println(genre);
+            // Puts title data into a hashmap
+            titleAuthor.put(title,author);
+            //Printing from hashMap
+            System.out.println("Printing from hashmap");
+            System.out.println(titleAuthor.get(title));
+
         });
-        root2.getChildren().addAll(titleBox, authorBox, genreBox, submit);
+
+        Button goHome = new Button();
+        goHome.setText("HomeScreen");
+        goHome.setLayoutX(100);
+        goHome.setLayoutY(500);
+        goHome.setOnAction(e -> stage.setScene(homeScene));
+
+        root2.getChildren().addAll(titleBox, authorBox, genreBox, submit, goHome);
     }
 
 }
