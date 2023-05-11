@@ -1,6 +1,7 @@
 package gui;
 
 import dataStructures.myHashMap;
+import database.DbConnectionWrapper;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
@@ -11,6 +12,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
+import java.sql.SQLException;
 
 public class appHomeGui extends Application {
     private Button addBooksButton, removeBooksButton, modifyBooksButton;
@@ -122,11 +125,20 @@ public class appHomeGui extends Application {
             System.out.println(title);
             System.out.println(author);
             System.out.println(genre);
-            // Puts title data into a hashmap
-            titleAuthor.put(title,author);
-            //Printing from hashMap
-            System.out.println("Printing from hashmap");
-            System.out.println(titleAuthor.get(title));
+            // Posting details into the DB
+            DbConnectionWrapper dbWrapper = new DbConnectionWrapper();
+            try {
+                dbWrapper.connect();
+                int rowsAffected = dbWrapper.executeUpdate("INSERT INTO book_details (title, author, genre) values (?,?,?)",title,author,genre);
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+
+//            // Puts title data into a hashmap
+//            titleAuthor.put(title,author);
+//            //Printing from hashMap
+//            System.out.println("Printing from hashmap");
+//            System.out.println(titleAuthor.get(title));
 
         });
 
