@@ -4,9 +4,9 @@ import java.sql.*;
 
 public class DbConnectionWrapper {
     // Postgres DB details. DB resides in AWS-RDS
-    //private static final String JDBC_URL =
-    //private static final String JDBC_USER =
-    //private static final String JDBC_PASSWORD =
+    private static final String JDBC_URL = "A";
+    private static final String JDBC_USER = "B";
+    private static final String JDBC_PASSWORD = "C";
     private Connection connection;
 
     public void connect() throws SQLException {

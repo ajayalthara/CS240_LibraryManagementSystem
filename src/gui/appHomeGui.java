@@ -18,7 +18,7 @@ import java.sql.SQLException;
 public class appHomeGui extends Application {
     private Button addBooksButton, removeBooksButton, modifyBooksButton;
     private Scene homeScene, addBooksScene;
-    private Group root, root2;
+    private Group homeSceneGroup, addBookSceneGroup;
     // Method that is called from main class to launch the GUI
     public static void begin(String[] args) {
         launch(args);
@@ -31,14 +31,16 @@ public class appHomeGui extends Application {
         stage.setHeight(700);
         stage.setResizable(true); // Determines if the window can be resized
         // Creates the root node which is of type Group
-        root = new Group();
-        root2 = new Group();
+        homeSceneGroup = new Group();
+        addBookSceneGroup = new Group();
         // Creates the home and addBook scene
-        homeScene = new Scene(root, 1000, 700, Color.LIGHTBLUE);
-        addBooksScene = new Scene(root2, 1000, 700, Color.LIGHTBLUE);
+        homeScene = new Scene(homeSceneGroup, 1000, 700, Color.LIGHTBLUE);
+        addBooksScene = new Scene(addBookSceneGroup, 1000, 700, Color.LIGHTBLUE);
         // Creating Icons
         Image windowIcon = new Image("bookIcon.png");
         stage.getIcons().add(windowIcon);
+        // Adding the watermark
+        Image waterMark = new Image("BookLineArt.png");
         // Adding buttons to home scene
         addBooks(stage);
         removeBooks();
@@ -50,8 +52,8 @@ public class appHomeGui extends Application {
         stage.show();
     }
 
-    private void goHome() {
-
+    private void goHome(Stage stage) {
+        stage.setScene(homeScene);
     }
 
     private void addBooks(Stage stage) { // creates a button to add books
@@ -60,7 +62,7 @@ public class appHomeGui extends Application {
         addBooksButton.setLayoutX(100); // button location
         addBooksButton.setLayoutY(350);
         addBooksButton.setPrefSize(120,40); // sets size of button
-        root.getChildren().add(addBooksButton);
+        homeSceneGroup.getChildren().add(addBooksButton);
         addBooksButton.setOnAction(e -> stage.setScene(addBooksScene));
     }
 
@@ -70,7 +72,7 @@ public class appHomeGui extends Application {
         removeBooksButton.setLayoutX(400);
         removeBooksButton.setLayoutY(350);
         removeBooksButton.setPrefSize(120,40);
-        root.getChildren().add(removeBooksButton);
+        homeSceneGroup.getChildren().add(removeBooksButton);
     }
 
     private void modifyBooks() { // creates a button to modify books
@@ -79,7 +81,7 @@ public class appHomeGui extends Application {
         modifyBooksButton.setLayoutX(700);
         modifyBooksButton.setLayoutY(350);
         modifyBooksButton.setPrefSize(120,40);
-        root.getChildren().add  (modifyBooksButton);
+        homeSceneGroup.getChildren().add  (modifyBooksButton);
     }
 
     private void getBookInfoScene(Stage stage) {
@@ -147,8 +149,8 @@ public class appHomeGui extends Application {
         goHome.setLayoutX(100);
         goHome.setLayoutY(500);
         goHome.setOnAction(e -> stage.setScene(homeScene));
-
-        root2.getChildren().addAll(titleBox, authorBox, genreBox, submit, goHome);
+        //Adding all objects in the Add book page
+        addBookSceneGroup.getChildren().addAll(titleBox, authorBox, genreBox, submit, goHome);
     }
 
 }

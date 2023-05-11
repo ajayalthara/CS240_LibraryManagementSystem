@@ -1,12 +1,14 @@
 import dataStructures.*;
-import gui.appHomeGui;
+import gui.AppLauncher;
+//import gui.appHomeGui;
 
 public class libraryManagementMain {
     public static void main(String[] args) {
         myLinkedList ajList = new myLinkedList();
-
-        appHomeGui appHomeGui = new appHomeGui();
-        appHomeGui.begin(args);
+        AppLauncher appGui = new AppLauncher();
+        appGui.begin(args);
+//        appHomeGui appHomeGui = new appHomeGui();
+//        appHomeGui.begin(args);
 //        myHashMap map = new myHashMap();
 //
 //        map.put(12, "Triangle");
