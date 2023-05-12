@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="600" prefWidth="700" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.HomeSceneController">
+   <children>
+      <Label alignment="CENTER_RIGHT" layoutX="5.0" layoutY="117.0" prefHeight="17.0" prefWidth="300.0" text="Book Title" />
+      <Label alignment="CENTER_RIGHT" layoutX="-1.0" layoutY="162.0" prefHeight="17.0" prefWidth="300.0" text="Author" />
+      <Label alignment="CENTER_RIGHT" layoutY="211.0" prefHeight="17.0" prefWidth="300.0" text="Genre" />
+      <Button layoutX="278.0" layoutY="262.0" mnemonicParsing="false" text="Submit" />
+      <TextField layoutX="307.0" layoutY="113.0" prefHeight="25.0" prefWidth="292.0" />
+      <TextField layoutX="307.0" layoutY="158.0" prefHeight="25.0" prefWidth="292.0" />
+      <TextField layoutX="307.0" layoutY="207.0" prefHeight="25.0" prefWidth="292.0" />
+      <Button layoutX="280.0" layoutY="325.0" mnemonicParsing="false" text="Home" />
+   </children>
+</AnchorPane>

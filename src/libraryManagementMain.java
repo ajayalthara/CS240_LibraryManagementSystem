@@ -1,11 +1,11 @@
 import dataStructures.*;
-import gui.AppLauncher;
+import gui.MainAppLauncher;
 //import gui.appHomeGui;
 
 public class libraryManagementMain {
     public static void main(String[] args) {
-        myLinkedList ajList = new myLinkedList();
-        AppLauncher appGui = new AppLauncher();
+       // myLinkedList ajList = new myLinkedList();
+        MainAppLauncher appGui = new MainAppLauncher();
         appGui.begin(args);
 //        appHomeGui appHomeGui = new appHomeGui();
 //        appHomeGui.begin(args);
