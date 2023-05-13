@@ -1,14 +1,13 @@
-create table book_details (
-  title VARCHAR(50) PRIMARY KEY,
+CREATE TABLE book_details (
+  title VARCHAR(50),
   genre VARCHAR(30),
-  author VARCHAR(30)
+  author VARCHAR(30),
+  PRIMARY KEY (title, genre, author)
 );
-
 create table inventory_details (
 	title VARCHAR(50),
 	number_of_copies integer,
-	available_copies	integer,
-	constraint fk_title_inventory foreign key (title) references book_details(title)
+	available_copies	integer
 );
 
 create table user_details (
@@ -19,6 +18,5 @@ create table user_details (
 create table checkout_info (
 	user_id integer,
 	title VARCHAR(50),
-	constraint fk_title_checkout foreign key (title) references book_details(title),
 	constraint fk_user_id_checkout foreign key (user_id) references user_details(user_id)
 );
