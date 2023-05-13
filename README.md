@@ -14,4 +14,12 @@ Version history:
   - Node class is the private class in the main LL class
   - New methods to remove,retrieve data based on indexes
   - JUnit test class is introduced for all methods
-
+- 03-May: Sukhman: Hashtable class added 
+- 05-May: Sukhman: First draft UI 
+- 12-May: Ajay: Complete UI rework
+  - Complete overhaul of packaging and architecture
+  - Modularized code for better maintainability
+  - Used Scene Builder to create the FXML file for scenes
+  - AddBook process flow completed
+  - Integration and use of locally impletement LinkedList module in code
+  - Postgres database integrated as central database 
