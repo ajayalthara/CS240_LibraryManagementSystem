@@ -36,7 +36,7 @@ public class myHashMap<K, V> {
         }
     }
     // The initial size of hashMap is assigned
-    private final int hashMapSize = 5;
+    private final int hashMapSize = 100;
     // hashTable is a list of k.v pairs of type hashMapEntry
     private hashMapEntry<K, V> hashTable[];
     // Constructor for the outer class which creates a hashTable with null entries and the size is equal to hashMapSize
@@ -47,6 +47,7 @@ public class myHashMap<K, V> {
     public void put(K key, V value) {
         //Rotating hash
         int hash = key.hashCode() % hashMapSize;
+        hash = Math.abs(hash);
         hashMapEntry<K, V> e = hashTable[hash];
 
         if (e == null) {
@@ -73,6 +74,7 @@ public class myHashMap<K, V> {
     //Function to retrieve value with the given key from hashMap
     public V get(K key) {
         int hash = key.hashCode() % hashMapSize;
+        hash = Math.abs(hash);
         hashMapEntry<K, V> e = hashTable[hash];
 
         if (e == null) {
@@ -89,6 +91,7 @@ public class myHashMap<K, V> {
     }
     public hashMapEntry<K, V> remove(K key) { // remove value & key
         int hash = key.hashCode() % hashMapSize;
+        hash = Math.abs(hash);
         hashMapEntry<K, V> e = hashTable[hash];
 
         if(e == null) {
@@ -130,6 +133,7 @@ public class myHashMap<K, V> {
 
     public boolean containsKey(K key) {
         int hash = key.hashCode() % hashMapSize;
+        hash = Math.abs(hash);
         hashMapEntry<K, V> e = hashTable[hash];
 
         if(e == null) {

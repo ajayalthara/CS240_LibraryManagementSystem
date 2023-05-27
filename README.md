@@ -2,11 +2,11 @@
 CS240 - LibraryManagementProject | Whatcomm CC | Team: Ajay, Gracia, Nabil, Sukhman
 
 Feature levels for the project
-- Level 1: Basic GUI with library functions such as adding, deleting, modifying book records.
-- Level 2: Search through the database. Search can be based on Title, Author, Genre, Availability.
-- Level 3: User module - User maintanance, book check out/check in.
-- Level 4: Admin module - Admin should be able to search through user and book records. View who checked out what, view status/number of available copies of books.
-- Level 5: User reviews to be made available alongside search results. We can also display top books in the welcome page (most checked out, most reviewed etc).
+- Level 1: Datastructure implementaion and Framework components
+- Level 2: GUI Outline and Add book workflow
+- Level 3: Delete, Modify book record workflow  
+- Level 4: Search
+- Level 5: User authentication and authorization 
 
 Version history:
 - 18-Apr: Sukhman: pushes the first draft of LL implementation
@@ -21,5 +21,5 @@ Version history:
   - Modularized code for better maintainability
   - Used Scene Builder to create the FXML file for scenes
   - AddBook process flow completed
-  - Integration and use of locally impletement LinkedList module in code
+  - Integration and use of locally impletemented LinkedList module in code
   - Postgres database integrated as central database 

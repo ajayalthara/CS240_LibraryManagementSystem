@@ -1,7 +1,7 @@
 package gui.controllers;
 
 
-import com.sun.scenario.effect.impl.sw.java.JSWBlend_SRC_INPeer;
+import dataStructures.myHashMap;
 import dataStructures.myLinkedList;
 import database.DbConnectionWrapper;
 import javafx.event.ActionEvent;
@@ -19,7 +19,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AddBookSceneController {
-    myLinkedList bookList = new myLinkedList<>();
+    // Creates the hash table and the linked list
+    private myHashMap bookTable = new myHashMap();
+    private myLinkedList bookList = new myLinkedList();
+    public void setBookTable(myHashMap bookTable) {
+        this.bookTable = bookTable;
+    }
+    public void setBookList(myLinkedList bookList) {
+        this.bookList = bookList;
+    }
+
     private Stage stage;
     private Scene scene;
     private Parent rootNode;
@@ -93,8 +102,9 @@ public class AddBookSceneController {
                     String title =  element.split("\\|")[0];
                     String author = element.split("\\|")[1];
                     String genre = element.split("\\|")[2];
-                    // Posting each book record in DB
+                    // Posting each book record in DB and the program memory (HashTable)
                     int rowsAffected = dbWrapper.executeUpdate("INSERT INTO book_details (title, author, genre) values (?,?,?)",title,author,genre);
+                    bookTable.put(title,author);
                 }
                 dbWrapper.disconnect();
                 // Alert showing successful addition of record
@@ -114,7 +124,6 @@ public class AddBookSceneController {
                 bookList.clear();
                 throw new RuntimeException(ex);
             }
-
         }
     }
 }
