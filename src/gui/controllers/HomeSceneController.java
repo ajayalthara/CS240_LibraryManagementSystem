@@ -17,7 +17,7 @@ public class HomeSceneController {
     private Scene scene;
     private Parent rootNode;
     // Creates the hash table and the linked list
-    private myHashMap bookTable = new myHashMap();
+    private myHashMap<String, String> bookTable = new myHashMap<>();
     private myLinkedList bookList = new myLinkedList();
     public void setBookList(myLinkedList bookList) {
         this.bookList = bookList;

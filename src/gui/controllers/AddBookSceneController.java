@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class AddBookSceneController {
     // Creates the hash table and the linked list
-    private myHashMap bookTable = new myHashMap();
+    private myHashMap<String, String> bookTable = new myHashMap<>();
     private myLinkedList bookList = new myLinkedList();
     public void setBookTable(myHashMap bookTable) {
         this.bookTable = bookTable;

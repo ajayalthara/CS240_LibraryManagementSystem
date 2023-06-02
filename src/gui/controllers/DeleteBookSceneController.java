@@ -18,7 +18,7 @@ import java.sql.SQLException;
 
 public class DeleteBookSceneController {
     // Creates the hash table and the linked list
-    private myHashMap bookTable = new myHashMap();
+    private myHashMap<String, String> bookTable = new myHashMap<>();
     public void setBookTable(myHashMap bookTable) {
         this.bookTable = bookTable;
     }
@@ -37,16 +37,6 @@ public class DeleteBookSceneController {
         if(title.length() > 50){
             title = title.substring(0,49);
         }
-        //##############################
-        //DEBUG Statements for HashTable issue
-        System.out.println((title));
-
-        bookTable.put("newKey", "newVal");
-        System.out.println(bookTable);
-        System.out.println(bookTable.containsKey("newKey"));
-        System.out.println(bookTable.containsKey("Book1"));
-        //############################
-
         if (bookTable.containsKey(title)) {
             // Making DB connection
             DbConnectionWrapper dbWrapper = new DbConnectionWrapper();

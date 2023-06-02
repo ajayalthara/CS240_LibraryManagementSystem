@@ -19,8 +19,8 @@ import java.util.ArrayList;
 
 public class MainAppLauncher extends Application {
     // Creates the hash table and the linked list
-    myHashMap bookTable = new myHashMap();
-    myLinkedList bookList = new myLinkedList();
+    public myHashMap<String, String> bookTable = new myHashMap<>();
+    public myLinkedList bookList = new myLinkedList();
 
     // Method that is called from main class to launch the GUI
     public static void begin(String[] args) {

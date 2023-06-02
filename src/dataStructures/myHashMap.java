@@ -36,7 +36,7 @@ public class myHashMap<K, V> {
         }
     }
     // The initial size of hashMap is assigned
-    private final int hashMapSize = 100;
+    private final int hashMapSize = 10;
     // hashTable is a list of k.v pairs of type hashMapEntry
     private hashMapEntry<K, V> hashTable[];
     // Constructor for the outer class which creates a hashTable with null entries and the size is equal to hashMapSize
@@ -56,14 +56,14 @@ public class myHashMap<K, V> {
             // Traverses the hashTable and checks each key for equality
             // If a key with the particular hash value is found then its value is updated
             while (e.next != null) {
-                if (e.getKey() == key) {
+                if (e.getKey().equals(key)) {
                     e.setValue(value);
                     return;
                 }
                 e = e.next;
             }
             // The following if block executes when there is a single element ('next' is null)
-            if (e.getKey() == key) { // if key exists, override it
+            if (e.getKey().equals(key)) { // if key exists, override it
                 e.setValue(value);
                 return;
             }
@@ -82,7 +82,7 @@ public class myHashMap<K, V> {
         }
 
         while (e != null) {
-            if (e.getKey() == key) { // if entry's key is equal to the key we are looking for
+            if (e.getKey().equals(key)) { // if entry's key is equal to the key we are looking for
                 return e.getValue(); // return the value associated with key
             }
             e = e.next; // otherwise look to next
@@ -98,7 +98,7 @@ public class myHashMap<K, V> {
             return null;
         }
 
-        if(e.getKey() == key) { // if the key matches given key for the head
+        if(e.getKey().equals(key)) { // if the key matches given key for the head
             hashTable[hash] = e.next; // the hashTable needs to point to next value, cutting out e
             e.next = null;
             return e;
@@ -108,7 +108,7 @@ public class myHashMap<K, V> {
         e = e.next;
 
         while(e != null) {
-            if(e.getKey() == key) {
+            if(e.getKey().equals(key)) {
                 prev.next = e.next;
                 e.next = null;
                 return e;
@@ -141,7 +141,7 @@ public class myHashMap<K, V> {
         }
 
         while(e != null) {
-            if(e.getKey() == key) { // if entry's key is equal to the key we are looking for
+            if(e.getKey().equals(key)) { // if entry's key is equal to the key we are looking for
                 return true;
             }
             e = e.next; // otherwise look to next
