@@ -137,7 +137,7 @@ public class myHashMap<K, V> {
         }
 
         while(e != null) {
-            if(e.getKey() == key) { // if entry's key is equal to the key we are looking for
+            if(e.getKey().equals(key)) { // if entry's key is equal to the key we are looking for
                 return true;
             }
             e = e.next; // otherwise look to next

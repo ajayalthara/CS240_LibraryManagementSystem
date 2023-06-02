@@ -17,7 +17,6 @@ class myLinkedListTest {
         junitLLTest.clear();
         assertTrue(junitLLTest.isListEmpty());
     }
-
     @org.junit.jupiter.api.Test
     void sizeOfList() {
         myLinkedList junitLLTest = new myLinkedList<>();
