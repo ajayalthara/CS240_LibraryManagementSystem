@@ -23,3 +23,7 @@ Version history:
   - AddBook process flow completed
   - Integration and use of locally impletemented LinkedList module in code
   - Postgres database integrated as central database 
+- 26-May: Ajay: Delete record work flow completed
+- 2-June: Ajay: Hashmap integration completed
+- 5-June: Sukhman: Hashmap tests created
+- 6-June: Ajay: Search and modify module completed
