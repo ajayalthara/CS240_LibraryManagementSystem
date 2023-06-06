@@ -23,6 +23,12 @@ public class DbConnectionWrapper {
         Statement statement = connection.createStatement();
         return statement.executeQuery(query);
     }
+    public ResultSet executeQueryWithParam(String query, String... values) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement(query);
+        setStatementValues(statement, values);
+        return statement.executeQuery();
+    }
+
 
     public int executeUpdate(String query, String... values) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(query);

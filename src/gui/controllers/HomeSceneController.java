@@ -45,14 +45,25 @@ public class HomeSceneController {
         //Delete book controller object creation to pass the list and table
         DeleteBookSceneController deleteBookSceneController = loader.getController();
         deleteBookSceneController.setBookTable(bookTable);
+        deleteBookSceneController.setBookList(bookList);
         // Setting the stage for delete book scene
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(rootNode);
         stage.setScene(scene);
         stage.show();
     }
-    public void modifyBook(ActionEvent event){
-        System.out.println("Clicking on modify book");
+    public void searchAndModifyBook(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../sceneFxml/SearchModifyScene.fxml"));
+        rootNode = loader.load();
+        //Delete book controller object creation to pass the list and table
+        SearchModifySceneController searchModifySceneController = loader.getController();
+        searchModifySceneController.setBookTable(bookTable);
+        searchModifySceneController.setBookList(bookList);
+        // Setting the stage for delete book scene
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(rootNode);
+        stage.setScene(scene);
+        stage.show();
     }
     public void searchBook(ActionEvent event){
         System.out.println("Clicking on modify book");

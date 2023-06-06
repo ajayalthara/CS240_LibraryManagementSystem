@@ -11,9 +11,8 @@
       <HBox alignment="CENTER" layoutX="-1.0" layoutY="138.0" prefHeight="25.0" prefWidth="600.0" spacing="40.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
             <Button alignment="CENTER" mnemonicParsing="false" onAction="#addBook" text="Add New Books" />
-            <Button mnemonicParsing="false" onAction="#modifyBook" text="Modify Book Details" />
             <Button mnemonicParsing="false" onAction="#deleteBook" text="Remove Books" />
-            <Button mnemonicParsing="false" onAction="#searchBook" text="Search Books" />
+            <Button mnemonicParsing="false" onAction="#searchAndModifyBook" text="Search &amp; Modify" />
          </children>
       </HBox>
       <ImageView fitHeight="281.0" fitWidth="502.0" layoutX="195.0" layoutY="314.0" opacity="0.08" pickOnBounds="true">

@@ -38,9 +38,11 @@ public class AddBookSceneController {
     private TextField authorText;
     @FXML
     private TextField genreText;
+    public void setTitleText(String titleString) {
+        this.titleText.setText(titleString);
+    }
     // Adding a new book record into the linked list/local storage
     public void addBookSubmit(ActionEvent event) throws IOException {
-
         // Taking all the text field values in the screen into strings
         // The substring function is called to limit the number of characters to what is allowed in DB tables
         String title = titleText.getText();
@@ -71,7 +73,13 @@ public class AddBookSceneController {
     // Function that navigates to home screen if there is no data in linked list
     public void loadHomePage(ActionEvent event) throws IOException {
         if(bookList.isListEmpty()) {
-            rootNode = FXMLLoader.load(getClass().getResource("../sceneFxml/HomePageScene.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../sceneFxml/HomePageScene.fxml"));
+            rootNode = loader.load();
+            // Home page controller object creation to pass the list and table
+            HomeSceneController homeSceneController = loader.getController();
+            homeSceneController.setBookTable(bookTable);
+            homeSceneController.setBookList(bookList);
+            // Setting stage for home scene
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(rootNode);
             stage.setScene(scene);

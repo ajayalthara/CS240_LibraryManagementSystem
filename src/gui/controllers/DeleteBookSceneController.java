@@ -2,6 +2,7 @@ package gui.controllers;
 
 
 import dataStructures.myHashMap;
+import dataStructures.myLinkedList;
 import database.DbConnectionWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,10 +20,13 @@ import java.sql.SQLException;
 public class DeleteBookSceneController {
     // Creates the hash table and the linked list
     private myHashMap<String, String> bookTable = new myHashMap<>();
+    private myLinkedList bookList = new myLinkedList();
     public void setBookTable(myHashMap bookTable) {
         this.bookTable = bookTable;
     }
-
+    public void setBookList(myLinkedList bookList) {
+        this.bookList = bookList;
+    }
     private Stage stage;
     private Scene scene;
     private Parent rootNode;
@@ -72,7 +76,13 @@ public class DeleteBookSceneController {
     }
     // Function that navigates to home screen if there is no data in linked list
     public void loadHomePage(ActionEvent event) throws IOException {
-        rootNode = FXMLLoader.load(getClass().getResource("../sceneFxml/HomePageScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../sceneFxml/HomePageScene.fxml"));
+        rootNode = loader.load();
+        // Home page controller object creation to pass the list and table
+        HomeSceneController homeSceneController = loader.getController();
+        homeSceneController.setBookTable(bookTable);
+        homeSceneController.setBookList(bookList);
+        // Setting stage for home scene
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(rootNode);
         stage.setScene(scene);
