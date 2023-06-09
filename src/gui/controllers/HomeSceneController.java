@@ -65,7 +65,4 @@ public class HomeSceneController {
         stage.setScene(scene);
         stage.show();
     }
-    public void searchBook(ActionEvent event){
-        System.out.println("Clicking on modify book");
-    }
 }

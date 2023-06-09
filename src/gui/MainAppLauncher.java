@@ -43,20 +43,27 @@ public class MainAppLauncher extends Application {
             closeWindow(stage);
         });
 
+        // Code block from where home screen page is called
         // Loading all book records from DB into HashTable
         loadDataFromDBToTable();
-
-        // SceneBuilder Scene creation
         FXMLLoader loader = new FXMLLoader(getClass().getResource("sceneFxml/HomePageScene.fxml"));
         Parent rootNode = loader.load();
-
         //Setting a common object for the hash table and linked list.
         //This will be passed between scene controllers
         HomeSceneController homeSceneController = loader.getController();
         homeSceneController.setBookList(bookList);
         homeSceneController.setBookTable(bookTable);
 
-        //Parent rootNode = FXMLLoader.load(getClass().getResource("sceneFxml/HomePageScene.fxml"));
+//        // Code block from where the user login page is called
+//        //Setting a common object for the hash table and linked list.
+//        //This will be passed between scene controllers
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("sceneFxml/UserAuthScene.fxml"));
+//        Parent rootNode = loader.load();
+//        UserAuthSceneController userAuthSceneController = loader.getController();
+//        userAuthSceneController.setBookList(bookList);
+//        userAuthSceneController.setBookTable(bookTable);
+
+        // Setting the scene and showing the stage
         Scene homePageScene = new Scene(rootNode);
         // Setting the stage and showing the home screen
         stage.setScene(homePageScene);

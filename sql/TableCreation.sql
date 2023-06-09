@@ -13,6 +13,8 @@ create table inventory_details (
 create table user_details (
 	user_id	integer PRIMARY KEY,
 	name varchar(50),
+	active char(1),
+	role varchar(20)
 );
 
 create table checkout_info (
