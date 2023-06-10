@@ -36,7 +36,6 @@ public class UserAuthSceneController {
     private TextField userIdText;
     @FXML
     private PasswordField passwordText;
-
     private ActionEvent event;
     String userActive, userRole;
 
@@ -56,7 +55,6 @@ public class UserAuthSceneController {
             getUserActiveRoleFrom(userDetails);
             checkIfUserActiveAndLoadHome();
     }
-
     private void getUserActiveRoleFrom(ResultSet userDetails){
         if(userDetailsIsNull(userDetails)) {
             failedAuthenticationAlert();
@@ -64,7 +62,6 @@ public class UserAuthSceneController {
             getUserActiveRoleFromLastRow(userDetails);
         }
     }
-
     private ResultSet getUserDetailsFromDb(String userId, String password){
         ResultSet userDetails = null;
         DbConnectionWrapper dbWrapper = new DbConnectionWrapper();
@@ -78,7 +75,6 @@ public class UserAuthSceneController {
         dbWrapperDisconnect(dbWrapper);
         return userDetails;
     }
-
     private boolean userDetailsIsNull(ResultSet userDetails){
         try{
             if(userDetails.wasNull()) return true;
@@ -87,8 +83,6 @@ public class UserAuthSceneController {
         }
         return false;
     }
-
-
     private void getUserActiveRoleFromLastRow(ResultSet userDetails){
         try{
             if (userDetails.next()){ //this causes the error
@@ -99,25 +93,25 @@ public class UserAuthSceneController {
             sqlConnectionAlert();
         }
     }
-
     private void checkIfUserActiveAndLoadHome(){
         if (userActive != null && userActive.equals("Y")){
             loadHomePageScene();
         }else{
             failedAuthenticationAlert();
         }
-
     }
-
     private void loadHomePageScene(){
         try {
+            loadDataFromDBToTable();
             // SceneBuilder Scene creation
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../sceneFxml/HomePageScene.fxml"));
             Parent rootNode = loader.load();
             //Setting a common object for the hash table and linked list.
             //This will be passed between scene controllers
+            HomeSceneController homeSceneController = loader.getController();
+            homeSceneController.setBookList(bookList);
+            homeSceneController.setBookTable(bookTable);
             setHomeSceneController(loader);
-            //Parent rootNode = FXMLLoader.load(getClass().getResource("sceneFxml/HomePageScene.fxml"));
             setSceneAndShowFrom(rootNode);
         }catch (IOException ex){
             failedLoaderAlert();
@@ -165,6 +159,8 @@ public class UserAuthSceneController {
     private void failedLoaderAlert(){
         makeAlertTitleHeader("Home Page Loading Failed!", "Try again");
         // Clearing the text fields
+        userIdText.clear();
+        passwordText.clear();
     }
 
     private void makeAlertTitleHeader(String title, String header){
@@ -175,5 +171,31 @@ public class UserAuthSceneController {
 
 
     }
-
+    // This function loads the contents of book_details table into a Hashmap as soon as user authentication is done
+    private void loadDataFromDBToTable(){
+        // Making DB connection
+        DbConnectionWrapper dbWrapper = new DbConnectionWrapper();
+        try {
+            dbWrapper.connect();
+            ResultSet bookDetails = dbWrapper.executeQuery("Select Title, Author from Book_Details");
+            while (bookDetails.next()){
+                String title = bookDetails.getString(1);
+                String author = bookDetails.getString(2);
+                bookTable.put(title,author);
+            }
+            //System.out.println(bookTable);
+            bookDetails.close();
+            dbWrapper.disconnect();
+        }
+        catch (SQLException ex) {
+            // DB connection error alert
+            Alert addFailureAlert = new Alert(Alert.AlertType.INFORMATION);
+            addFailureAlert.setTitle("Failed");
+            addFailureAlert.setHeaderText("DB Error. Check connection parameters");
+            addFailureAlert.showAndWait();
+            //Clearing the local data list
+            bookList.clear();
+            throw new RuntimeException(ex);
+        }
+    }
 }

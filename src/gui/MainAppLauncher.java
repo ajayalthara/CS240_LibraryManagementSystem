@@ -3,7 +3,6 @@ package gui;
 import dataStructures.myHashMap;
 import dataStructures.myLinkedList;
 import database.DbConnectionWrapper;
-import gui.controllers.HomeSceneController;
 import gui.controllers.UserAuthSceneController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -44,7 +43,7 @@ public class MainAppLauncher extends Application {
             closeWindow(stage);
         });
 
-        loadDataFromDBToTable();
+        //loadDataFromDBToTable();
 
 //        // Code block from where the user login page is called
 //        //Setting a common object for the hash table and linked list.
