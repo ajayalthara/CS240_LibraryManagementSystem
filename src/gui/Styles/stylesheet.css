@@ -1,0 +1,45 @@
+/* style.css */
+
+.root {
+    -fx-background-color: #fbf2d5; /* Light Gray Background */
+}
+
+.button {
+    -fx-background-color: #7fa99b; /* Dodger Blue */
+    -fx-text-fill: white; /* White text */
+    -fx-border-radius: 15; /* Rounded borders */
+    -fx-background-radius: 15; /* Background also needs to be rounded */
+    -fx-padding: 10 20; /* Space around text */
+    -fx-font-size: 16px; /* Bigger font size */
+}
+
+.button:hover {
+    -fx-background-color: #394a51; /* Cornflower Blue */
+}
+
+.image-view {
+    -fx-opacity: 0.2; /* Lower opacity */
+}
+
+Label {
+    -fx-font-size: 18px;
+    -fx-text-fill: #394a51;
+    -fx-font-weight: bold;
+    -fx-font-family: "Tahoma";
+}
+
+
+.header-text {
+    -fx-font-size: 48px; /* Make the text larger */
+    -fx-font-family: 'Tahoma', fallback, sans-serif;
+    -fx-font-weight: 900; /* Make the text bold */
+    -fx-text-fill: #394a51; /* Color the text Dodger Blue */
+}
+.text-field:focused {
+    -fx-focus-color: rgba(57, 74, 81, 0.3);
+    -fx-faint-focus-color: rgba(57, 74, 81, 0.3);
+}
+
+
+
+
