@@ -36,7 +36,7 @@ public class myHashMap<K, V> {
         }
     }
     // The initial size of hashMap is assigned
-    private final int hashMapSize = 50;
+    private final int hashMapSize = 101;
     // hashTable is a list of k.v pairs of type hashMapEntry
     private hashMapEntry<K, V> hashTable[];
     // Constructor for the outer class which creates a hashTable with null entries and the size is equal to hashMapSize
