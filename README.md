@@ -27,3 +27,5 @@ Version history:
 - 2-June: Ajay: Hashmap integration completed
 - 5-June: Sukhman: Hashmap tests created
 - 6-June: Ajay: Search and modify module completed
+- 11-June: Nabil and Gracia: Updated the testFX suite of tests for the UI 
+- 12-June: Final presetation done 
